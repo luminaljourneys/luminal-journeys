@@ -31,6 +31,7 @@ export default function LandingPage() {
         <button onClick={() => navigate("/intake")} style={{
           background: "var(--color-accent)", color: "#fff",
           padding: "0.6rem 1.6rem", borderRadius: "2rem",
+          border: "none", cursor: "pointer",
           textDecoration: "none", fontSize: "0.85rem",
           letterSpacing: "0.08em", fontFamily: "'DM Sans', sans-serif",
           transition: "background 0.2s"
