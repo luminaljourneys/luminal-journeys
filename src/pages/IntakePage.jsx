@@ -74,7 +74,7 @@ export default function IntakePage() {
       {/* TOP BAR */}
       <div style={{ padding: "1.2rem 2.5rem", display: "flex", justifyContent: "space-between", alignItems: "center", borderBottom: "1px solid rgba(95,158,160,0.15)", background: "var(--color-bg)" }}>
         <button onClick={() => navigate("/")} style={{ fontSize: "1.3rem", fontWeight: 600, color: "var(--color-primary)", background: "none", border: "none", cursor: "pointer", letterSpacing: "0.04em" }}>
-          Luminal Journey
+          Luminal Journeys
         </button>
         <span style={{ fontSize: "0.8rem", fontFamily: "'DM Sans', sans-serif", color: "var(--color-text-muted)", letterSpacing: "0.08em" }}>
           New Client Intake
@@ -278,6 +278,9 @@ export default function IntakePage() {
             }}>Submit Intake ✦</button>
           )}
         </div>
+      </div>
+      <div style={{ textAlign: "center", padding: "1.5rem", fontFamily: "'DM Sans', sans-serif", fontSize: "0.75rem", color: "var(--color-text-muted)", borderTop: "1px solid var(--color-border)" }}>
+        © {new Date().getFullYear()} Luminal Journeys · All rights reserved
       </div>
       <MockupBanner />
     </div>

@@ -98,7 +98,7 @@ function LoginModal({ onAuth }) {
 
         <div style={{ textAlign: "center", marginBottom: "2rem" }}>
           <div style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: "1.6rem", color: "var(--color-primary)", marginBottom: "0.3rem" }}>
-            Luminal Journey
+            Luminal Journeys
           </div>
           <div style={{ fontSize: "0.7rem", letterSpacing: "0.15em", textTransform: "uppercase", color: "var(--color-text-muted)" }}>
             Admin Sign In
@@ -231,7 +231,7 @@ function Dashboard() {
             background: "none", border: "none", cursor: "pointer",
             fontFamily: "'DM Serif Display', Georgia, serif",
             fontSize: "1.3rem", color: "rgba(255,255,255,0.9)"
-          }}>Luminal Journey</button>
+          }}>Luminal Journeys</button>
           <span style={{ color: "rgba(255,255,255,0.3)" }}>|</span>
           <span style={{ color: "rgba(255,255,255,0.55)", fontSize: "0.75rem", letterSpacing: "0.12em", textTransform: "uppercase" }}>Admin</span>
         </div>
@@ -414,6 +414,9 @@ function Dashboard() {
             Click status badge to advance · Click ▼ to expand row · Data is local until Firestore is connected
           </div>
         </div>
+      </div>
+      <div style={{ textAlign: "center", padding: "1.5rem", fontFamily: "'DM Sans', sans-serif", fontSize: "0.75rem", color: "var(--color-text-muted)" }}>
+        © {new Date().getFullYear()} Luminal Journeys · All rights reserved
       </div>
       <MockupBanner />
     </div>

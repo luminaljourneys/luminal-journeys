@@ -26,7 +26,7 @@ export default function LandingPage() {
         transition: "all 0.4s ease"
       }}>
         <span style={{ fontSize: "1.5rem", fontWeight: 600, letterSpacing: "0.04em", color: "var(--color-primary)" }}>
-          Luminal Journey
+          Luminal Journeys
         </span>
         <button onClick={() => navigate("/intake")} style={{
           background: "var(--color-accent)", color: "#fff",
@@ -223,7 +223,7 @@ export default function LandingPage() {
         borderTop: "1px solid rgba(95,158,160,0.15)",
         fontFamily: "'DM Sans', sans-serif", fontSize: "0.85rem", color: "var(--color-text-muted)"
       }}>
-        © {new Date().getFullYear()} Luminal Journey · Built with care
+        © {new Date().getFullYear()} Luminal Journeys · Built with care
         <span style={{ margin: "0 0.6rem", opacity: 0.3 }}>·</span>
         <a
           href="/admin"
