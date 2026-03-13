@@ -68,6 +68,7 @@ export default function MockupBanner() {
                 Pending before launch
               </div>
               {[
+                "Waiting on marketing landing page real content",
                 "Waiting on real intake form field inputs",
                 "Firestore database connection",
                 "Auth0 authentication",
