@@ -15,79 +15,46 @@ export default function ThemeSwitcher() {
     localStorage.setItem("lj_theme", active);
   }, [active]);
 
-  const select = (key) => {
-    setActive(key);
-    setOpen(false);
+  const select = (key) => { setActive(key); setOpen(false); };
+
+  const pill = {
+    display: "flex", alignItems: "center", gap: "0.5rem",
+    background: "#fff", color: "#1A1A2E",
+    border: "1px solid rgba(26,26,46,0.15)",
+    borderRadius: "0 0 2rem 2rem",
+    padding: "0.35rem 1.2rem 0.45rem", cursor: "pointer",
+    fontSize: "0.68rem", letterSpacing: "0.12em", textTransform: "uppercase",
+    boxShadow: "0 2px 12px rgba(0,0,0,0.12)", transition: "all 0.2s",
+    fontFamily: "ui-sans-serif, sans-serif"
   };
 
   return (
-    <div style={{
-      position: "fixed", top: 0, left: 0, right: 0, zIndex: 1000,
-      display: "flex", justifyContent: "center", pointerEvents: "none"
-    }}>
+    <div style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 1000, display: "flex", justifyContent: "center", pointerEvents: "none" }}>
       <div style={{ pointerEvents: "auto" }}>
-
-        {/* Collapsed pill */}
         {!open && (
-          <button
-            onClick={() => setOpen(true)}
-            style={{
-              display: "flex", alignItems: "center", gap: "0.5rem",
-              background: "rgba(10,10,20,0.82)", backdropFilter: "blur(12px)",
-              border: "1px solid rgba(255,255,255,0.12)", borderRadius: "0 0 2rem 2rem",
-              padding: "0.35rem 1.2rem 0.45rem", cursor: "pointer",
-              color: "rgba(255,255,255,0.7)", fontSize: "0.68rem",
-              letterSpacing: "0.12em", textTransform: "uppercase",
-              transition: "all 0.2s", fontFamily: "ui-sans-serif, sans-serif"
-            }}
-            onMouseEnter={e => e.currentTarget.style.background = "rgba(10,10,20,0.95)"}
-            onMouseLeave={e => e.currentTarget.style.background = "rgba(10,10,20,0.82)"}
-          >
-            <span style={{ color: "rgba(255,255,255,0.4)", fontSize: "0.55rem" }}>◆</span>
+          <button onClick={() => setOpen(true)} style={pill}>
+            <span style={{ color: "rgba(26,26,46,0.4)", fontSize: "0.55rem" }}>◆</span>
             Theme {active}
-            <span style={{ color: "rgba(255,255,255,0.3)", fontSize: "0.6rem" }}>▾</span>
+            <span style={{ color: "rgba(26,26,46,0.35)", fontSize: "0.6rem" }}>▾</span>
           </button>
         )}
-
-        {/* Expanded panel */}
         {open && (
-          <div style={{
-            background: "rgba(10,10,20,0.92)", backdropFilter: "blur(16px)",
-            border: "1px solid rgba(255,255,255,0.1)", borderRadius: "0 0 1.2rem 1.2rem",
-            padding: "0.8rem 1rem", display: "flex", alignItems: "center", gap: "0.5rem",
-            fontFamily: "ui-sans-serif, sans-serif"
-          }}>
-            <span style={{ fontSize: "0.62rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", marginRight: "0.3rem" }}>
-              Theme
-            </span>
+          <div style={{ background: "#fff", border: "1px solid rgba(26,26,46,0.12)", borderRadius: "0 0 1.2rem 1.2rem", padding: "0.8rem 1rem", display: "flex", alignItems: "center", gap: "0.5rem", boxShadow: "0 4px 24px rgba(0,0,0,0.12)", fontFamily: "ui-sans-serif, sans-serif" }}>
+            <span style={{ fontSize: "0.62rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(26,26,46,0.4)", marginRight: "0.3rem" }}>Theme</span>
             {Object.entries(THEMES).map(([key, t]) => (
-              <button
-                key={key}
-                onClick={() => select(key)}
-                title={t.desc}
-                style={{
-                  display: "flex", alignItems: "center", gap: "0.5rem",
-                  background: active === key ? "rgba(255,255,255,0.15)" : "transparent",
-                  border: active === key ? "1px solid rgba(255,255,255,0.25)" : "1px solid rgba(255,255,255,0.08)",
-                  borderRadius: "2rem", padding: "0.3rem 0.9rem",
-                  cursor: "pointer", transition: "all 0.15s",
-                  color: active === key ? "#fff" : "rgba(255,255,255,0.5)",
-                }}
-                onMouseEnter={e => { if (active !== key) e.currentTarget.style.background = "rgba(255,255,255,0.08)"; }}
-                onMouseLeave={e => { if (active !== key) e.currentTarget.style.background = "transparent"; }}
-              >
-                <span style={{ fontSize: "0.75rem", fontWeight: 600, letterSpacing: "0.04em" }}>{t.label}</span>
-                <span style={{ fontSize: "0.65rem", letterSpacing: "0.06em", color: active === key ? "rgba(255,255,255,0.7)" : "rgba(255,255,255,0.3)" }}>{t.name}</span>
+              <button key={key} onClick={() => select(key)} title={t.desc} style={{
+                display: "flex", alignItems: "center", gap: "0.5rem",
+                background: active === key ? "#1A1A2E" : "transparent",
+                border: active === key ? "1px solid #1A1A2E" : "1px solid rgba(26,26,46,0.15)",
+                borderRadius: "2rem", padding: "0.3rem 0.9rem", cursor: "pointer",
+                color: active === key ? "#fff" : "rgba(26,26,46,0.6)",
+                transition: "all 0.15s"
+              }}>
+                <span style={{ fontSize: "0.75rem", fontWeight: 600 }}>{t.label}</span>
+                <span style={{ fontSize: "0.65rem" }}>{t.name}</span>
               </button>
             ))}
-            <button
-              onClick={() => setOpen(false)}
-              style={{
-                background: "none", border: "none", cursor: "pointer",
-                color: "rgba(255,255,255,0.3)", fontSize: "1rem", padding: "0 0.3rem",
-                marginLeft: "0.2rem", lineHeight: 1
-              }}
-            >×</button>
+            <button onClick={() => setOpen(false)} style={{ background: "none", border: "none", cursor: "pointer", color: "rgba(26,26,46,0.35)", fontSize: "1rem", padding: "0 0.3rem", lineHeight: 1 }}>×</button>
           </div>
         )}
       </div>
