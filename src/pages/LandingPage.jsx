@@ -30,7 +30,7 @@ function LayoutEditorial() {
 
       {/* NAV */}
       <nav style={{
-        position: "fixed", top: 40, left: 0, right: 0, zIndex: 90,
+        position: "fixed", top: 0, left: 0, right: 0, zIndex: 900,
         display: "flex", justifyContent: "space-between", alignItems: "center",
         padding: "1.1rem 3rem",
         background: scrolled ? "rgba(10,16,12,0.95)" : "transparent",
@@ -74,8 +74,8 @@ function LayoutEditorial() {
           fontWeight: 400, color: "#fff", lineHeight: 1.05, marginBottom: "2rem",
           maxWidth: 900
         }}>
-          Where healing begins<br />
-          <span style={{ color: "var(--color-accent)", fontStyle: "italic" }}>with being heard.</span>
+          Where healing begins with being<br />
+          <span style={{ color: "var(--color-accent)", fontStyle: "italic" }}>heard.</span>
         </h1>
 
         <div style={{ display: "flex", alignItems: "center", gap: "1.5rem", flexWrap: "wrap" }}>
@@ -191,7 +191,7 @@ function LayoutCommand() {
 
       {/* NAV */}
       <nav style={{
-        position: "fixed", top: 40, left: 0, right: 0, zIndex: 90,
+        position: "fixed", top: 0, left: 0, right: 0, zIndex: 900,
         display: "flex", justifyContent: "space-between", alignItems: "center",
         padding: "1.2rem 3rem", background: "#EEEAE3",
         borderBottom: "1px solid rgba(10,22,40,0.08)"
@@ -321,7 +321,7 @@ function LayoutTrust() {
 
       {/* NAV */}
       <nav style={{
-        position: "fixed", top: 40, left: 0, right: 0, zIndex: 90,
+        position: "fixed", top: 0, left: 0, right: 0, zIndex: 900,
         display: "flex", justifyContent: "space-between", alignItems: "center",
         padding: "1rem 3rem",
         background: scrolled ? "#fff" : "rgba(255,255,255,0.95)",
@@ -501,7 +501,7 @@ function LayoutClarity() {
 
       {/* NAV */}
       <nav style={{
-        position: "fixed", top: 40, left: 0, right: 0, zIndex: 90,
+        position: "fixed", top: 0, left: 0, right: 0, zIndex: 900,
         display: "flex", justifyContent: "space-between", alignItems: "center",
         padding: "1rem 4rem",
         background: scrolled ? "rgba(250,250,247,0.97)" : "rgba(250,250,247,0.85)",
@@ -544,8 +544,8 @@ function LayoutClarity() {
             fontWeight: 400, lineHeight: 1.08, color: "var(--color-primary)",
             marginBottom: "1.8rem", letterSpacing: "-0.02em"
           }}>
-            Health care built<br />
-            around <em style={{ color: "var(--color-accent)", fontStyle: "italic" }}>you.</em>
+            Health care built around<br />
+            <em style={{ color: "var(--color-accent)", fontStyle: "italic" }}>you.</em>
           </h1>
 
           <p style={{ fontSize: "1.1rem", color: "rgba(26,26,20,0.6)", lineHeight: 1.75, marginBottom: "2.5rem", maxWidth: 440 }}>
@@ -741,7 +741,7 @@ function LayoutMovement() {
 
       {/* NAV — minimal, B Corp style */}
       <nav style={{
-        position: "fixed", top: 40, left: 0, right: 0, zIndex: 90,
+        position: "fixed", top: 0, left: 0, right: 0, zIndex: 900,
         display: "flex", justifyContent: "space-between", alignItems: "center",
         padding: "1.2rem 4rem",
         background: scrolled ? BC.cream : "transparent",
