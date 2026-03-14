@@ -222,8 +222,7 @@ function LayoutCommand() {
             letterSpacing: "-0.02em"
           }}>
             YOUR HEALTH.<br />
-            <span style={{ color: "var(--color-accent)" }}>FULLY</span><br />
-            HEARD.
+            <span style={{ color: "var(--color-accent)" }}>FULLY HEARD.</span>
           </h1>
           <p style={{ fontSize: "1rem", color: "rgba(10,22,40,0.55)", lineHeight: 1.7, marginBottom: "2.5rem", maxWidth: 400 }}>
             Corporate-grade integrative care for leaders who demand precision, privacy, and outcomes.
