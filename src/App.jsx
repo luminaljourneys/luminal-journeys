@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import LandingPage from "./pages/LandingPage";
 import IntakePage from "./pages/IntakePage";
 import AdminPage from "./pages/AdminPage";
+import ThemeSwitcher from "./components/ThemeSwitcher";
 
-// Global navigate function — use this everywhere instead of <a href>
 export function navigate(to) {
   window.history.pushState({}, "", to);
   window.dispatchEvent(new Event("routechange"));
@@ -28,7 +28,12 @@ function useRoute() {
 
 export default function App() {
   const route = useRoute();
-  if (route === "/intake") return <IntakePage />;
-  if (route === "/admin")  return <AdminPage />;
-  return <LandingPage />;
+  return (
+    <>
+      <ThemeSwitcher />
+      {route === "/intake" && <IntakePage />}
+      {route === "/admin"  && <AdminPage />}
+      {route !== "/intake" && route !== "/admin" && <LandingPage />}
+    </>
+  );
 }
