@@ -3,6 +3,7 @@ import LandingPage from "./pages/LandingPage";
 import IntakePage from "./pages/IntakePage";
 import AdminPage from "./pages/AdminPage";
 import ThemeSwitcher from "./components/ThemeSwitcher";
+import LookFeelSwitcher from "./components/LookFeelSwitcher";
 
 export function navigate(to) {
   window.history.pushState({}, "", to);
@@ -28,12 +29,14 @@ function useRoute() {
 
 export default function App() {
   const route = useRoute();
+  const isLanding = route !== "/intake" && route !== "/admin";
   return (
     <>
       <ThemeSwitcher />
+      {isLanding && <LookFeelSwitcher />}
       {route === "/intake" && <IntakePage />}
       {route === "/admin"  && <AdminPage />}
-      {route !== "/intake" && route !== "/admin" && <LandingPage />}
+      {isLanding && <LandingPage />}
     </>
   );
 }
