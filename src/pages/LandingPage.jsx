@@ -89,7 +89,7 @@ export default function LandingPage() {
               background: B.deep, color: B.paper, border: "none",
               padding: "0.65rem 1.8rem", borderRadius: "2rem", cursor: "pointer",
               fontSize: "0.82rem", fontFamily: "var(--font-body)", letterSpacing: "0.04em", fontWeight: 500
-            }}>Begin Intake</button>
+            }}>Discover Your Journey</button>
           </div>
         )}
         {mobile && (
@@ -97,7 +97,7 @@ export default function LandingPage() {
             background: B.deep, color: B.paper, border: "none",
             padding: "0.5rem 1.2rem", borderRadius: "2rem", cursor: "pointer",
             fontSize: "0.75rem", fontFamily: "var(--font-body)", fontWeight: 500
-          }}>Begin Intake</button>
+          }}>Discover Your Journey</button>
         )}
       </nav>
 
@@ -142,7 +142,7 @@ export default function LandingPage() {
               background: B.deep, color: B.paper, border: "none",
               padding: "1rem 2.5rem", borderRadius: "3rem", cursor: "pointer",
               fontSize: "0.95rem", fontFamily: "var(--font-body)", fontWeight: 500
-            }}>Begin Your Intake →</button>
+            }}>Discover Your Journey →</button>
             <span style={{ fontSize: "0.78rem", color: B.muted, fontFamily: "var(--font-mono)" }}>5 minutes · No commitment required</span>
           </div>
         </div>
@@ -245,7 +245,7 @@ export default function LandingPage() {
           }}
             onMouseEnter={e => { e.currentTarget.style.background = B.paper; e.currentTarget.style.color = B.deep; }}
             onMouseLeave={e => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = B.paper; }}
-          >Begin Your Intake →</button>
+          >Discover Your Journey →</button>
         </div>
       </div>
 
