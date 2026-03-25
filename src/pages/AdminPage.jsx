@@ -82,10 +82,10 @@ function LoginModal({ onAuth }) {
     <div style={{
       position: "fixed", inset: 0, zIndex: 999,
       display: "flex", alignItems: "center", justifyContent: "center",
-      background: "rgba(17,76,92,0.55)", fontFamily: "'DM Sans', sans-serif"
+      background: "rgba(23,47,45,0.55)", fontFamily: "'DM Sans', sans-serif"
     }}>
       <div style={{
-        background: "var(--color-bg)", borderRadius: "1.2rem",
+        background: "#f9f7f4", borderRadius: "1.2rem",
         padding: "2.8rem 2.5rem", width: "100%", maxWidth: 400,
         boxShadow: "0 24px 80px rgba(17,76,92,0.2)",
         border: "1px solid var(--color-border)", position: "relative", margin: "1rem"
@@ -93,14 +93,14 @@ function LoginModal({ onAuth }) {
         <button onClick={() => navigate("/")} style={{
           position: "absolute", top: "1.2rem", right: "1.4rem",
           background: "none", border: "none", cursor: "pointer",
-          color: "var(--color-text-muted)", fontSize: "1.4rem", lineHeight: 1
+          color: "#89a99e", fontFamily: "var(--font-mono)", fontSize: "1.4rem", lineHeight: 1
         }}>×</button>
 
         <div style={{ textAlign: "center", marginBottom: "2rem" }}>
-          <div style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: "1.6rem", color: "var(--color-primary)", marginBottom: "0.3rem" }}>
+          <div style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: "1.6rem", color: "#172f2d", marginBottom: "0.3rem" }}>
             Luminal Journeys
           </div>
-          <div style={{ fontSize: "0.7rem", letterSpacing: "0.15em", textTransform: "uppercase", color: "var(--color-text-muted)" }}>
+          <div style={{ fontSize: "0.7rem", letterSpacing: "0.15em", textTransform: "uppercase", color: "#89a99e", fontFamily: "var(--font-mono)" }}>
             Admin Sign In
           </div>
         </div>
@@ -114,9 +114,9 @@ function LoginModal({ onAuth }) {
             placeholder="Admin username"
             style={{
               width: "100%", padding: "0.75rem 1rem", boxSizing: "border-box",
-              border: "1.5px solid " + (error ? "#E07A5F" : "var(--color-border)"),
+              border: "1.5px solid " + (error ? "#bf8a3e" : "var(--color-border)"),
               borderRadius: "0.6rem", fontSize: "0.92rem", outline: "none",
-              background: "var(--color-bg-soft)", color: "var(--color-text)"
+              background: "#e6ddd0", color: "var(--color-text)"
             }}
           />
         </div>
@@ -130,9 +130,9 @@ function LoginModal({ onAuth }) {
             placeholder="Enter password"
             style={{
               width: "100%", padding: "0.75rem 1rem", boxSizing: "border-box",
-              border: "1.5px solid " + (error ? "#E07A5F" : "var(--color-border)"),
+              border: "1.5px solid " + (error ? "#bf8a3e" : "var(--color-border)"),
               borderRadius: "0.6rem", fontSize: "0.92rem", outline: "none",
-              background: "var(--color-bg-soft)", color: "var(--color-text)"
+              background: "#e6ddd0", color: "var(--color-text)"
             }}
           />
         </div>
@@ -140,7 +140,7 @@ function LoginModal({ onAuth }) {
         {error && <div style={{ fontSize: "0.82rem", color: "#E07A5F", marginBottom: "1rem", textAlign: "center" }}>Incorrect username or password</div>}
 
         <button onClick={submit} style={{
-          width: "100%", background: "var(--color-primary)", color: "#fff",
+          width: "100%", background: "#172f2d", color: "#fff",
           border: "none", borderRadius: "0.6rem", padding: "0.85rem",
           fontSize: "0.9rem", cursor: "pointer", letterSpacing: "0.04em"
         }}>Sign In</button>
@@ -148,7 +148,7 @@ function LoginModal({ onAuth }) {
         <div style={{ textAlign: "center", marginTop: "1.4rem" }}>
           <button onClick={() => navigate("/")} style={{
             background: "none", border: "none", cursor: "pointer",
-            fontSize: "0.8rem", color: "var(--color-text-muted)"
+            fontSize: "0.8rem", color: "#89a99e", fontFamily: "var(--font-mono)"
           }}>← Back to site</button>
         </div>
       </div>
@@ -197,14 +197,14 @@ function Dashboard() {
   const th = (col) => ({
     padding: "0.75rem 1rem", textAlign: "left",
     fontSize: "0.7rem", letterSpacing: "0.1em", textTransform: "uppercase",
-    color: "var(--color-text-muted)", fontWeight: 500,
+    color: "#89a99e", fontFamily: "var(--font-mono)", fontWeight: 500,
     cursor: col ? "pointer" : "default", userSelect: "none", whiteSpace: "nowrap",
-    borderBottom: "1.5px solid var(--color-border)", background: "var(--color-bg-soft)",
+    borderBottom: "1.5px solid rgba(23,47,45,0.12)", background: "#e6ddd0",
   });
 
   const td = {
     padding: "0.85rem 1rem", fontSize: "0.87rem",
-    color: "var(--color-text)", borderBottom: "1px solid var(--color-border)",
+    color: "var(--color-text)", borderBottom: "1px solid rgba(23,47,45,0.1)",
     verticalAlign: "middle",
   };
 
@@ -219,18 +219,18 @@ function Dashboard() {
   ];
 
   return (
-    <div style={{ minHeight: "100vh", background: "var(--color-bg)", fontFamily: "'DM Sans', sans-serif" }}>
+    <div style={{ minHeight: "100vh", background: "#f9f7f4", fontFamily: "'DM Sans', sans-serif" }}>
 
       {/* NAV */}
       <div style={{
         padding: "1rem 2.5rem", display: "flex", justifyContent: "space-between", alignItems: "center",
-        background: "var(--color-primary)", borderBottom: "1px solid rgba(255,255,255,0.1)"
+        background: "#172f2d", borderBottom: "1px solid rgba(255,255,255,0.1)"
       }}>
         <div style={{ display: "flex", alignItems: "center", gap: "1.5rem" }}>
           <button onClick={() => navigate("/")} style={{
             background: "none", border: "none", cursor: "pointer",
-            fontFamily: "'DM Serif Display', Georgia, serif",
-            fontSize: "1.2rem", fontWeight: 600, color: "rgba(255,255,255,0.95)", letterSpacing: "-0.01em"
+            fontFamily: "'DM Sans', sans-serif",
+            fontSize: "0.85rem", fontWeight: 600, color: "rgba(249,247,244,0.95)", letterSpacing: "0.18em", textTransform: "uppercase"
           }}>Luminal Journeys</button>
           <span style={{ color: "rgba(255,255,255,0.3)" }}>|</span>
           <span style={{ color: "rgba(255,255,255,0.55)", fontSize: "0.75rem", letterSpacing: "0.12em", textTransform: "uppercase" }}>Admin</span>
@@ -251,10 +251,10 @@ function Dashboard() {
 
       <div style={{ maxWidth: 1280, margin: "0 auto", padding: "2.5rem 2rem" }}>
 
-        <h1 style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: "2.2rem", fontWeight: 400, color: "var(--color-primary)", marginBottom: "0.3rem" }}>
+        <h1 style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: "2.2rem", fontWeight: 400, color: "#172f2d", marginBottom: "0.3rem" }}>
           Welcome back ✦
         </h1>
-        <p style={{ fontSize: "0.9rem", color: "var(--color-text-muted)", marginTop: 0 }}>
+        <p style={{ fontSize: "0.9rem", color: "#89a99e", fontFamily: "var(--font-mono)", marginTop: 0 }}>
           {new Date().toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric", year: "numeric" })}
         </p>
 
@@ -273,17 +273,17 @@ function Dashboard() {
               borderRadius: "0.8rem", padding: "1.3rem 1.5rem", borderTop: "3px solid " + m.accent
             }}>
               <div style={{ fontSize: "2rem", fontWeight: 600, color: m.accent, lineHeight: 1, marginBottom: "0.35rem" }}>{m.value}</div>
-              <div style={{ fontSize: "0.72rem", letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--color-text-muted)" }}>{m.label}</div>
+              <div style={{ fontSize: "0.72rem", letterSpacing: "0.08em", textTransform: "uppercase", color: "#89a99e", fontFamily: "var(--font-mono)" }}>{m.label}</div>
             </div>
           ))}
         </div>
 
         {/* TABLE */}
         <div style={{ background: "#fff", border: "1px solid var(--color-border)", borderRadius: "0.8rem", overflow: "hidden" }}>
-          <div style={{ padding: "1rem 1.2rem", display: "flex", justifyContent: "space-between", alignItems: "center", borderBottom: "1px solid var(--color-border)" }}>
+          <div style={{ padding: "1rem 1.2rem", display: "flex", justifyContent: "space-between", alignItems: "center", borderBottom: "1px solid rgba(23,47,45,0.1)" }}>
             <span style={{ fontSize: "0.85rem", fontWeight: 500, color: "var(--color-text)" }}>
               Client Intakes
-              <span style={{ fontSize: "0.78rem", color: "var(--color-text-muted)", fontWeight: 400, marginLeft: "0.6rem" }}>
+              <span style={{ fontSize: "0.78rem", color: "#89a99e", fontFamily: "var(--font-mono)", fontWeight: 400, marginLeft: "0.6rem" }}>
                 {filtered.length} record{filtered.length !== 1 ? "s" : ""}
               </span>
             </span>
@@ -292,11 +292,11 @@ function Dashboard() {
                 style={{
                   padding: "0.45rem 0.9rem", border: "1.5px solid var(--color-border)",
                   borderRadius: "2rem", fontSize: "0.83rem", outline: "none",
-                  width: 200, background: "var(--color-bg)", color: "var(--color-text)"
+                  width: 200, background: "#f9f7f4", color: "var(--color-text)"
                 }}
               />
               <button onClick={() => navigate("/intake")} style={{
-                background: "var(--color-accent)", color: "#fff", border: "none",
+                background: "#bf8a3e", color: "#fff", border: "none",
                 padding: "0.45rem 1.1rem", borderRadius: "2rem",
                 cursor: "pointer", fontSize: "0.8rem", letterSpacing: "0.04em"
               }}>+ New Intake</button>
@@ -317,7 +317,7 @@ function Dashboard() {
               <tbody>
                 {filtered.length === 0 && (
                   <tr>
-                    <td colSpan={16} style={{ ...td, textAlign: "center", color: "var(--color-text-muted)", padding: "3rem" }}>
+                    <td colSpan={16} style={{ ...td, textAlign: "center", color: "#89a99e", fontFamily: "var(--font-mono)", padding: "3rem" }}>
                       No records found
                     </td>
                   </tr>
@@ -332,7 +332,7 @@ function Dashboard() {
                         onMouseEnter={e => e.currentTarget.style.background = "rgba(17,76,92,0.03)"}
                         onMouseLeave={e => e.currentTarget.style.background = isExp ? "rgba(17,76,92,0.03)" : "transparent"}
                       >
-                        <td style={{ ...td, color: "var(--color-text-muted)", width: 36 }}>{i + 1}</td>
+                        <td style={{ ...td, color: "#89a99e", fontFamily: "var(--font-mono)", width: 36 }}>{i + 1}</td>
                         <td style={{ ...td, fontWeight: 500 }}>{row.firstName}</td>
                         <td style={{ ...td, fontWeight: 500 }}>{row.lastName}</td>
                         <td style={{ ...td, color: "var(--color-text-soft)" }}>{row.preferredName || "—"}</td>
@@ -346,7 +346,7 @@ function Dashboard() {
                         <td style={{ ...td, fontSize: "0.82rem", textTransform: "capitalize" }}>{row.preferredContact}</td>
                         <td style={{ ...td, fontSize: "0.82rem", maxWidth: 180 }}>{row.primaryGoal}</td>
                         <td style={{ ...td, fontSize: "0.82rem" }}>{row.hearAboutUs || "—"}</td>
-                        <td style={{ ...td, whiteSpace: "nowrap", fontSize: "0.82rem", color: "var(--color-text-muted)" }}>{fmt(row.submittedAt)}</td>
+                        <td style={{ ...td, whiteSpace: "nowrap", fontSize: "0.82rem", color: "#89a99e", fontFamily: "var(--font-mono)" }}>{fmt(row.submittedAt)}</td>
                         <td style={td}>
                           <button onClick={() => cycleStatus(row.id)} style={{
                             background: sc.bg, color: sc.color, border: "none", borderRadius: "2rem",
@@ -366,14 +366,14 @@ function Dashboard() {
                                   border: "1.5px solid var(--color-primary)", borderRadius: "0.4rem",
                                   fontSize: "0.82rem", fontFamily: "'DM Sans', sans-serif",
                                   resize: "none", outline: "none",
-                                  background: "var(--color-bg-soft)", color: "var(--color-text)", boxSizing: "border-box"
+                                  background: "#e6ddd0", color: "var(--color-text)", boxSizing: "border-box"
                                 }}
                               />
                               <div style={{ display: "flex", gap: "0.4rem" }}>
                                 <button onClick={() => { setIntakes(prev => prev.map(r => r.id === row.id ? { ...r, notes: noteDraft } : r)); setNoteEditing(null); }}
-                                  style={{ background: "var(--color-primary)", color: "#fff", border: "none", borderRadius: "0.4rem", padding: "0.3rem 0.7rem", fontSize: "0.75rem", cursor: "pointer" }}>Save</button>
+                                  style={{ background: "#172f2d", color: "#fff", border: "none", borderRadius: "0.4rem", padding: "0.3rem 0.7rem", fontSize: "0.75rem", cursor: "pointer" }}>Save</button>
                                 <button onClick={() => setNoteEditing(null)}
-                                  style={{ background: "none", border: "1px solid var(--color-border)", borderRadius: "0.4rem", padding: "0.3rem 0.7rem", fontSize: "0.75rem", cursor: "pointer", color: "var(--color-text-muted)" }}>Cancel</button>
+                                  style={{ background: "none", border: "1px solid var(--color-border)", borderRadius: "0.4rem", padding: "0.3rem 0.7rem", fontSize: "0.75rem", cursor: "pointer", color: "#89a99e", fontFamily: "var(--font-mono)" }}>Cancel</button>
                               </div>
                             </div>
                           ) : row.notes ? (
@@ -384,26 +384,26 @@ function Dashboard() {
                             </div>
                           ) : (
                             <button onClick={() => { setNoteEditing(row.id); setNoteDraft(""); }}
-                              style={{ background: "none", border: "1.5px dashed var(--color-border)", borderRadius: "0.4rem", padding: "0.3rem 0.7rem", fontSize: "0.75rem", cursor: "pointer", color: "var(--color-text-muted)", whiteSpace: "nowrap" }}>+ Add Note</button>
+                              style={{ background: "none", border: "1.5px dashed var(--color-border)", borderRadius: "0.4rem", padding: "0.3rem 0.7rem", fontSize: "0.75rem", cursor: "pointer", color: "#89a99e", fontFamily: "var(--font-mono)", whiteSpace: "nowrap" }}>+ Add Note</button>
                           )}
                         </td>
                         <td style={{ ...td, width: 36 }}>
                           <button onClick={() => setExpanded(isExp ? null : row.id)}
-                            style={{ background: "none", border: "none", cursor: "pointer", color: "var(--color-text-muted)", fontSize: "1.1rem", padding: "0.1rem 0.3rem" }}>
+                            style={{ background: "none", border: "none", cursor: "pointer", color: "#89a99e", fontFamily: "var(--font-mono)", fontSize: "1.1rem", padding: "0.1rem 0.3rem" }}>
                             {isExp ? "▲" : "▼"}
                           </button>
                         </td>
                       </tr>
                       {isExp && (
                         <tr>
-                          <td colSpan={16} style={{ padding: "1.2rem 1.5rem", background: "var(--color-bg-soft)", borderBottom: "1px solid var(--color-border)" }}>
+                          <td colSpan={16} style={{ padding: "1.2rem 1.5rem", background: "#e6ddd0", borderBottom: "1px solid rgba(23,47,45,0.1)" }}>
                             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "1rem" }}>
                               <div>
-                                <div style={{ fontSize: "0.68rem", textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--color-text-muted)", marginBottom: "0.2rem" }}>Full Address</div>
+                                <div style={{ fontSize: "0.68rem", textTransform: "uppercase", letterSpacing: "0.1em", color: "#89a99e", fontFamily: "var(--font-mono)", marginBottom: "0.2rem" }}>Full Address</div>
                                 <div style={{ fontSize: "0.88rem", color: "var(--color-text)" }}>{row.address}, {row.city}, {row.state} {row.zip}</div>
                               </div>
                               <div>
-                                <div style={{ fontSize: "0.68rem", textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--color-text-muted)", marginBottom: "0.2rem" }}>Additional Notes</div>
+                                <div style={{ fontSize: "0.68rem", textTransform: "uppercase", letterSpacing: "0.1em", color: "#89a99e", fontFamily: "var(--font-mono)", marginBottom: "0.2rem" }}>Additional Notes</div>
                                 <div style={{ fontSize: "0.88rem", color: "var(--color-text)" }}>{row.additionalNotes || "None provided"}</div>
                               </div>
                             </div>
@@ -417,12 +417,12 @@ function Dashboard() {
             </table>
           </div>
 
-          <div style={{ padding: "0.75rem 1.2rem", borderTop: "1px solid var(--color-border)", background: "var(--color-bg-soft)", fontSize: "0.73rem", color: "var(--color-text-muted)" }}>
+          <div style={{ padding: "0.75rem 1.2rem", borderTop: "1px solid var(--color-border)", background: "#e6ddd0", fontSize: "0.73rem", color: "#89a99e", fontFamily: "var(--font-mono)" }}>
             Click status badge to advance · Click ▼ to expand row · Data is local until Firestore is connected
           </div>
         </div>
       </div>
-      <div style={{ textAlign: "center", padding: "1.5rem", fontFamily: "'DM Sans', sans-serif", fontSize: "0.75rem", color: "var(--color-text-muted)" }}>
+      <div style={{ textAlign: "center", padding: "1.5rem", fontFamily: "'DM Sans', sans-serif", fontSize: "0.75rem", color: "#89a99e", fontFamily: "var(--font-mono)" }}>
         © {new Date().getFullYear()} Luminal Journeys · All rights reserved
       </div>
       <MockupBanner />

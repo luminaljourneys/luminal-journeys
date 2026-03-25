@@ -4,24 +4,48 @@ import { navigate } from "../App.jsx";
 
 const STEPS = ["Personal Info", "Contact Info", "About You", "Confirm"];
 
-const inputStyle = (focused, name) => ({
-  width: "100%", padding: "0.8rem 1rem", boxSizing: "border-box",
-  border: "1.5px solid " + (focused === name ? "var(--color-primary)" : "var(--color-border)"),
-  borderRadius: "0.6rem", fontSize: "0.92rem", outline: "none",
-  background: "var(--color-bg-soft)", color: "var(--color-text)",
-  fontFamily: "'DM Sans', sans-serif", transition: "border 0.2s",
-  boxShadow: focused === name ? "0 0 0 3px rgba(17,76,92,0.08)" : "none"
-});
+// Required fields per step for validation
+const REQUIRED = {
+  firstName: true, lastName: true, dateOfBirth: true, email: true, primaryGoal: true
+};
+
+const inputStyle = (focused, name, value) => {
+  const hasValue = value && value.toString().trim().length > 0;
+  const isValid = hasValue && !focused;
+  const isFocused = focused === name;
+
+  let borderColor = "var(--color-border)";
+  let shadow = "none";
+  let bg = "var(--color-bg-soft)";
+
+  if (isFocused) {
+    borderColor = "var(--color-primary)";
+    shadow = "0 0 0 3px rgba(44,95,74,0.1)";
+  } else if (isValid) {
+    borderColor = "var(--color-accent)";
+    shadow = "0 0 0 3px rgba(74,140,106,0.08)";
+    bg = "rgba(74,140,106,0.04)";
+  }
+
+  return {
+    width: "100%", padding: "0.8rem 1rem", boxSizing: "border-box",
+    border: "1.5px solid " + borderColor,
+    borderRadius: "0.6rem", fontSize: "0.92rem", outline: "none",
+    background: bg, color: "#172f2d",
+    fontFamily: "'DM Sans', sans-serif", transition: "border 0.2s, box-shadow 0.2s, background 0.2s",
+    boxShadow: shadow
+  };
+};
 
 const labelStyle = {
   display: "block", fontSize: "0.72rem", letterSpacing: "0.1em",
-  textTransform: "uppercase", color: "var(--color-text-soft)", marginBottom: "0.4rem"
+  textTransform: "uppercase", color: "#3a5450", marginBottom: "0.4rem", fontFamily: "var(--font-mono)", letterSpacing: "0.06em"
 };
 
 function Field({ label, required, children }) {
   return (
     <div style={{ marginBottom: "1.4rem" }}>
-      <label style={labelStyle}>{label}{required && <span style={{ color: "var(--color-accent)" }}> *</span>}</label>
+      <label style={labelStyle}>{label}{required && <span style={{ color: "#bf8a3e" }}> *</span>}</label>
       {children}
     </div>
   );
@@ -38,7 +62,13 @@ export default function IntakePage() {
   });
 
   const set = (field) => (e) => setForm(prev => ({ ...prev, [field]: e.target.value }));
-  const inp = (field) => ({ value: form[field], onChange: set(field), onFocus: () => setFocused(field), onBlur: () => setFocused(null), style: inputStyle(focused, field) });
+  const inp = (field) => ({
+    value: form[field],
+    onChange: set(field),
+    onFocus: () => setFocused(field),
+    onBlur: () => setFocused(null),
+    style: inputStyle(focused, field, form[field])
+  });
 
   const handleSubmit = () => setSubmitted(true);
 
@@ -51,10 +81,10 @@ export default function IntakePage() {
       }}>
         <div>
           <div style={{ fontSize: "3rem", marginBottom: "1rem" }}>✦</div>
-          <h1 style={{ fontSize: "2.8rem", fontWeight: 400, color: "var(--color-text)", marginBottom: "1rem" }}>
+          <h1 style={{ fontSize: "2.8rem", fontWeight: 400, color: "#172f2d", marginBottom: "1rem" }}>
             Thank you, {form.preferredName || form.firstName}.
           </h1>
-          <p style={{ fontSize: "1.1rem", color: "var(--color-text-soft)", fontFamily: "'DM Sans', sans-serif", fontWeight: 300, maxWidth: 440, margin: "0 auto 2rem", lineHeight: 1.7 }}>
+          <p style={{ fontSize: "1.1rem", color: "#3a5450", fontFamily: "'DM Sans', sans-serif", fontWeight: 300, maxWidth: 440, margin: "0 auto 2rem", lineHeight: 1.7 }}>
             We've received your intake form and will reach out to <strong>{form.email}</strong> within 1–2 business days to schedule your first visit.
           </p>
           <button onClick={() => navigate("/")} style={{
@@ -72,11 +102,11 @@ export default function IntakePage() {
     <div style={{ minHeight: "100vh", background: "var(--color-bg)", fontFamily: "'DM Serif Display', Georgia, serif" }}>
 
       {/* TOP BAR */}
-      <div style={{ padding: "1.2rem 2.5rem", display: "flex", justifyContent: "space-between", alignItems: "center", borderBottom: "1px solid rgba(95,158,160,0.15)", background: "var(--color-bg)" }}>
-        <button onClick={() => navigate("/")} style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: "1.2rem", fontWeight: 600, color: "var(--color-primary)", background: "none", border: "none", cursor: "pointer", letterSpacing: "-0.01em" }}>
+      <div style={{ padding: "1.2rem 2.5rem", display: "flex", justifyContent: "space-between", alignItems: "center", borderBottom: "1px solid rgba(23,47,45,0.1)", background: "var(--color-bg)" }}>
+        <button onClick={() => navigate("/")} style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.85rem", fontWeight: 600, color: "#172f2d", background: "none", border: "none", cursor: "pointer", letterSpacing: "0.18em", textTransform: "uppercase" }}>
           Luminal Journeys
         </button>
-        <span style={{ fontSize: "0.8rem", fontFamily: "'DM Sans', sans-serif", color: "var(--color-text-muted)", letterSpacing: "0.08em" }}>
+        <span style={{ fontSize: "0.8rem", fontFamily: "'DM Sans', sans-serif", color: "#89a99e", letterSpacing: "0.08em", fontFamily: "var(--font-mono)" }}>
           New Client Intake
         </span>
       </div>
@@ -86,19 +116,19 @@ export default function IntakePage() {
         <div style={{ display: "flex", gap: "0.5rem", marginBottom: "2.5rem" }}>
           {STEPS.map((s, i) => (
             <div key={i} style={{ flex: 1 }}>
-              <div style={{ height: 3, borderRadius: 2, background: i <= step ? "var(--color-primary)" : "rgba(95,158,160,0.2)", transition: "background 0.3s" }} />
-              <div style={{ fontSize: "0.65rem", marginTop: "0.4rem", fontFamily: "'DM Sans', sans-serif", letterSpacing: "0.06em", textTransform: "uppercase", color: i <= step ? "var(--color-primary)" : "var(--color-text-muted)", transition: "color 0.3s" }}>{s}</div>
+              <div style={{ height: 3, borderRadius: 2, background: i <= step ? "#224e4a" : "rgba(137,169,158,0.25)", transition: "background 0.3s" }} />
+              <div style={{ fontSize: "0.65rem", marginTop: "0.4rem", fontFamily: "'DM Sans', sans-serif", letterSpacing: "0.06em", textTransform: "uppercase", color: i <= step ? "#172f2d" : "#89a99e", transition: "color 0.3s" }}>{s}</div>
             </div>
           ))}
         </div>
 
-        <div style={{ marginBottom: "0.3rem", fontFamily: "'DM Sans', sans-serif", fontSize: "0.78rem", color: "var(--color-text-muted)", letterSpacing: "0.08em" }}>
+        <div style={{ marginBottom: "0.3rem", fontFamily: "'DM Sans', sans-serif", fontSize: "0.78rem", color: "#89a99e", letterSpacing: "0.08em", fontFamily: "var(--font-mono)" }}>
           Step {step + 1} of {STEPS.length}
         </div>
         <h2 style={{ fontSize: "2rem", fontWeight: 400, color: "var(--color-primary)", marginBottom: "0.5rem", marginTop: 0 }}>
           {STEPS[step]}
         </h2>
-        <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.95rem", color: "var(--color-text-soft)", marginBottom: "2rem", marginTop: 0 }}>
+        <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.95rem", color: "#3a5450", marginBottom: "2rem", marginTop: 0 }}>
           {step === 0 && "Let's start with the basics — tell us who you are."}
           {step === 1 && "How can we reach you? We'll use this to confirm your appointment."}
           {step === 2 && "A little more about you so we can prepare."}
@@ -123,7 +153,7 @@ export default function IntakePage() {
               <input type="date" {...inp("dateOfBirth")} />
             </Field>
             <Field label="Pronouns">
-              <select {...inp("pronouns")} style={{ ...inputStyle(focused, "pronouns"), appearance: "none" }}>
+              <select {...inp("pronouns")} style={{ ...inputStyle(focused, "pronouns", form["pronouns"]), appearance: "none" }}>
                 <option value="">Select pronouns</option>
                 <option>She / Her</option>
                 <option>He / Him</option>
@@ -162,7 +192,7 @@ export default function IntakePage() {
             <Field label="Preferred Contact Method">
               <div style={{ display: "flex", gap: "1rem", fontFamily: "'DM Sans', sans-serif" }}>
                 {["email", "phone", "text"].map(method => (
-                  <label key={method} style={{ display: "flex", alignItems: "center", gap: "0.4rem", cursor: "pointer", fontSize: "0.9rem", color: "var(--color-text)", textTransform: "capitalize" }}>
+                  <label key={method} style={{ display: "flex", alignItems: "center", gap: "0.4rem", cursor: "pointer", fontSize: "0.9rem", color: "#172f2d", textTransform: "capitalize" }}>
                     <input type="radio" name="preferredContact" value={method} checked={form.preferredContact === method} onChange={set("preferredContact")} />
                     {method}
                   </label>
@@ -176,7 +206,7 @@ export default function IntakePage() {
         {step === 2 && (
           <div>
             <Field label="Primary Goal" required>
-              <select {...inp("primaryGoal")} style={{ ...inputStyle(focused, "primaryGoal"), appearance: "none" }}>
+              <select {...inp("primaryGoal")} style={{ ...inputStyle(focused, "primaryGoal", form["primaryGoal"]), appearance: "none" }}>
                 <option value="">Select your primary goal</option>
                 <option>Stress & Anxiety Management</option>
                 <option>Hormonal Balance</option>
@@ -190,7 +220,7 @@ export default function IntakePage() {
               </select>
             </Field>
             <Field label="How did you hear about us?">
-              <select {...inp("hearAboutUs")} style={{ ...inputStyle(focused, "hearAboutUs"), appearance: "none" }}>
+              <select {...inp("hearAboutUs")} style={{ ...inputStyle(focused, "hearAboutUs", form["hearAboutUs"]), appearance: "none" }}>
                 <option value="">Select an option</option>
                 <option>Friend or Family</option>
                 <option>Google Search</option>
@@ -208,7 +238,7 @@ export default function IntakePage() {
                 onFocus={() => setFocused("additionalNotes")}
                 onBlur={() => setFocused(null)}
                 rows={5}
-                style={{ ...inputStyle(focused, "additionalNotes"), resize: "vertical" }}
+                style={{ ...inputStyle(focused, "additionalNotes", form["additionalNotes"]), resize: "vertical" }}
               />
             </Field>
           </div>
@@ -234,17 +264,17 @@ export default function IntakePage() {
                 ["Additional Notes", form.additionalNotes || "—"]
               ]},
             ].map(section => (
-              <div key={section.title} style={{ marginBottom: "1.8rem", background: "var(--color-bg-soft)", borderRadius: "0.8rem", padding: "1.5rem", border: "1px solid var(--color-border)" }}>
-                <div style={{ fontSize: "0.7rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--color-text-muted)", marginBottom: "1rem" }}>{section.title}</div>
+              <div key={section.title} style={{ marginBottom: "1.8rem", background: "#e6ddd0", borderRadius: "0.8rem", padding: "1.5rem", border: "1px solid rgba(23,47,45,0.1)" }}>
+                <div style={{ fontSize: "0.7rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "#89a99e", fontFamily: "var(--font-mono)", marginBottom: "1rem" }}>{section.title}</div>
                 {section.fields.map(([label, value]) => (
                   <div key={label} style={{ display: "flex", justifyContent: "space-between", marginBottom: "0.6rem", fontSize: "0.88rem" }}>
-                    <span style={{ color: "var(--color-text-muted)" }}>{label}</span>
-                    <span style={{ color: "var(--color-text)", fontWeight: 500, textAlign: "right", maxWidth: "60%" }}>{value}</span>
+                    <span style={{ color: "#89a99e", fontFamily: "var(--font-mono)" }}>{label}</span>
+                    <span style={{ color: "#172f2d", fontWeight: 500, textAlign: "right", maxWidth: "60%" }}>{value}</span>
                   </div>
                 ))}
               </div>
             ))}
-            <p style={{ fontSize: "0.78rem", color: "var(--color-text-muted)", lineHeight: 1.6, marginBottom: "1.5rem" }}>
+            <p style={{ fontSize: "0.78rem", color: "#89a99e", fontFamily: "var(--font-mono)", lineHeight: 1.6, marginBottom: "1.5rem" }}>
               By submitting this form, you consent to being contacted by Luminal Journeys to schedule your appointment. Your information is kept private and never shared.
             </p>
           </div>
@@ -254,8 +284,8 @@ export default function IntakePage() {
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: "1rem", paddingBottom: "3rem" }}>
           {step > 0 ? (
             <button onClick={() => setStep(step - 1)} style={{
-              background: "none", border: "1.5px solid var(--color-border)",
-              color: "var(--color-text-soft)", padding: "0.75rem 1.8rem", borderRadius: "2rem",
+              background: "none", border: "1.5px solid rgba(23,47,45,0.15)",
+              color: "#89a99e", padding: "0.75rem 1.8rem", borderRadius: "2rem",
               cursor: "pointer", fontFamily: "'DM Sans', sans-serif", fontSize: "0.9rem"
             }}>← Back</button>
           ) : (
@@ -271,7 +301,7 @@ export default function IntakePage() {
             }}>Continue →</button>
           ) : (
             <button onClick={handleSubmit} style={{
-              background: "var(--color-accent)", color: "#fff",
+              background: "#bf8a3e", color: "#f9f7f4",
               padding: "0.85rem 2.4rem", borderRadius: "2rem", border: "none",
               cursor: "pointer", fontFamily: "'DM Sans', sans-serif", fontSize: "0.95rem",
               fontWeight: 600, transition: "all 0.2s"
@@ -279,7 +309,7 @@ export default function IntakePage() {
           )}
         </div>
       </div>
-      <div style={{ textAlign: "center", padding: "1.5rem", fontFamily: "'DM Sans', sans-serif", fontSize: "0.75rem", color: "var(--color-text-muted)", borderTop: "1px solid var(--color-border)" }}>
+      <div style={{ textAlign: "center", padding: "1.5rem", fontFamily: "'DM Sans', sans-serif", fontSize: "0.75rem", color: "#89a99e", fontFamily: "var(--font-mono)", borderTop: "1px solid var(--color-border)" }}>
         © {new Date().getFullYear()} Luminal Journeys · All rights reserved
       </div>
       <MockupBanner />
