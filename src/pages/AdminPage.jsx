@@ -223,7 +223,7 @@ function Dashboard() {
 
       {/* NAV */}
       <div style={{
-        padding: "1rem 2.5rem", display: "flex", justifyContent: "space-between", alignItems: "center",
+        padding: "1rem clamp(1rem, 3vw, 2.5rem)", display: "flex", justifyContent: "space-between", alignItems: "center",
         background: "#172f2d", borderBottom: "1px solid rgba(255,255,255,0.1)"
       }}>
         <div style={{ display: "flex", alignItems: "center", gap: "1.5rem" }}>
@@ -249,7 +249,7 @@ function Dashboard() {
         </div>
       </div>
 
-      <div style={{ maxWidth: 1280, margin: "0 auto", padding: "2.5rem 2rem" }}>
+      <div style={{ maxWidth: 1280, margin: "0 auto", padding: "2.5rem clamp(1rem, 3vw, 2rem)" }}>
 
         <h1 style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: "2.2rem", fontWeight: 400, color: "#172f2d", marginBottom: "0.3rem" }}>
           Welcome back ✦

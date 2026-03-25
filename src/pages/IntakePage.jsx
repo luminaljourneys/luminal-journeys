@@ -1,8 +1,18 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import MockupBanner from "../components/MockupBanner.jsx";
 import { navigate } from "../App.jsx";
 
 const STEPS = ["Personal Info", "Contact Info", "About You", "Confirm"];
+
+function useIsMobile() {
+  const [mobile, setMobile] = React.useState(window.innerWidth < 600);
+  React.useEffect(() => {
+    const h = () => setMobile(window.innerWidth < 600);
+    window.addEventListener("resize", h);
+    return () => window.removeEventListener("resize", h);
+  }, []);
+  return mobile;
+}
 
 // Required fields per step for validation
 const REQUIRED = {
@@ -102,7 +112,7 @@ export default function IntakePage() {
     <div style={{ minHeight: "100vh", background: "var(--color-bg)", fontFamily: "'DM Serif Display', Georgia, serif" }}>
 
       {/* TOP BAR */}
-      <div style={{ padding: "1.2rem 2.5rem", display: "flex", justifyContent: "space-between", alignItems: "center", borderBottom: "1px solid rgba(23,47,45,0.1)", background: "var(--color-bg)" }}>
+      <div style={{ padding: "1.2rem clamp(1rem, 4vw, 2.5rem)", display: "flex", justifyContent: "space-between", alignItems: "center", borderBottom: "1px solid rgba(23,47,45,0.1)", background: "#f9f7f4" }}>
         <button onClick={() => navigate("/")} style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.85rem", fontWeight: 600, color: "#172f2d", background: "none", border: "none", cursor: "pointer", letterSpacing: "0.18em", textTransform: "uppercase" }}>
           Luminal Journeys
         </button>
@@ -112,7 +122,7 @@ export default function IntakePage() {
       </div>
 
       {/* PROGRESS */}
-      <div style={{ maxWidth: 640, margin: "0 auto", padding: "2.5rem 2rem 0" }}>
+      <div style={{ maxWidth: 640, margin: "0 auto", padding: "2.5rem clamp(1rem, 4vw, 2rem) 0" }}>
         <div style={{ display: "flex", gap: "0.5rem", marginBottom: "2.5rem" }}>
           {STEPS.map((s, i) => (
             <div key={i} style={{ flex: 1 }}>
@@ -138,7 +148,7 @@ export default function IntakePage() {
         {/* STEP 1 - Personal Info */}
         {step === 0 && (
           <div>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "1rem" }}>
               <Field label="First Name" required>
                 <input type="text" placeholder="First name" {...inp("firstName")} />
               </Field>
@@ -178,7 +188,7 @@ export default function IntakePage() {
             <Field label="Street Address">
               <input type="text" placeholder="123 Main St" {...inp("address")} />
             </Field>
-            <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr", gap: "1rem" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(120px, 1fr))", gap: "1rem" }}>
               <Field label="City">
                 <input type="text" placeholder="City" {...inp("city")} />
               </Field>
