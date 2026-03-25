@@ -230,16 +230,23 @@ function Dashboard() {
           <button onClick={() => navigate("/")} style={{
             background: "none", border: "none", cursor: "pointer",
             fontFamily: "'DM Serif Display', Georgia, serif",
-            fontSize: "1.3rem", color: "rgba(255,255,255,0.9)"
+            fontSize: "1.2rem", fontWeight: 600, color: "rgba(255,255,255,0.95)", letterSpacing: "-0.01em"
           }}>Luminal Journeys</button>
           <span style={{ color: "rgba(255,255,255,0.3)" }}>|</span>
           <span style={{ color: "rgba(255,255,255,0.55)", fontSize: "0.75rem", letterSpacing: "0.12em", textTransform: "uppercase" }}>Admin</span>
         </div>
-        <button onClick={() => { sessionStorage.removeItem("lj_admin"); navigate("/"); }} style={{
-          background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.2)",
-          color: "rgba(255,255,255,0.75)", padding: "0.4rem 1.1rem", borderRadius: "2rem",
-          cursor: "pointer", fontSize: "0.78rem", letterSpacing: "0.04em"
-        }}>Sign Out</button>
+        <div style={{ display: "flex", gap: "0.75rem" }}>
+          <button onClick={() => navigate("/brand")} style={{
+            background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.15)",
+            color: "rgba(255,255,255,0.6)", padding: "0.4rem 1.1rem", borderRadius: "2rem",
+            cursor: "pointer", fontSize: "0.78rem", letterSpacing: "0.04em"
+          }}>Brand Kit</button>
+          <button onClick={() => { sessionStorage.removeItem("lj_admin"); navigate("/"); }} style={{
+            background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.2)",
+            color: "rgba(255,255,255,0.75)", padding: "0.4rem 1.1rem", borderRadius: "2rem",
+            cursor: "pointer", fontSize: "0.78rem", letterSpacing: "0.04em"
+          }}>Sign Out</button>
+        </div>
       </div>
 
       <div style={{ maxWidth: 1280, margin: "0 auto", padding: "2.5rem 2rem" }}>

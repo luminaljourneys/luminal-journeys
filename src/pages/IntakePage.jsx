@@ -46,7 +46,7 @@ export default function IntakePage() {
     return (
       <div style={{
         minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center",
-        background: "radial-gradient(ellipse at 50% 40%, #EDE0CC 0%, var(--color-bg) 70%)",
+        background: "var(--color-bg)",
         fontFamily: "'DM Serif Display', Georgia, serif", padding: "2rem", textAlign: "center"
       }}>
         <div>
@@ -73,7 +73,7 @@ export default function IntakePage() {
 
       {/* TOP BAR */}
       <div style={{ padding: "1.2rem 2.5rem", display: "flex", justifyContent: "space-between", alignItems: "center", borderBottom: "1px solid rgba(95,158,160,0.15)", background: "var(--color-bg)" }}>
-        <button onClick={() => navigate("/")} style={{ fontSize: "1.3rem", fontWeight: 600, color: "var(--color-primary)", background: "none", border: "none", cursor: "pointer", letterSpacing: "0.04em" }}>
+        <button onClick={() => navigate("/")} style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: "1.2rem", fontWeight: 600, color: "var(--color-primary)", background: "none", border: "none", cursor: "pointer", letterSpacing: "-0.01em" }}>
           Luminal Journeys
         </button>
         <span style={{ fontSize: "0.8rem", fontFamily: "'DM Sans', sans-serif", color: "var(--color-text-muted)", letterSpacing: "0.08em" }}>
