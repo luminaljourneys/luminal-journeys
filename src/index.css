@@ -6,7 +6,7 @@
 :root {
   /* Core brand colors */
   --brand-deep:         #172f2d;   /* Deep Teal — headlines, primary text */
-  --brand-teal:         #224e4a;   /* Brand Teal — primary actions, links */
+  --brand-teal:         #30837c;   /* #224e4a (Original);   /* Brand Teal — primary actions, links */
   --brand-sage:         #89a99e;   /* Sage — supporting elements */
   --brand-sand:         #e6ddd0;   /* Sand — backgrounds, cards */
   --brand-amber:        #bf8a3e;   /* Warm Amber — accent, highlights */
